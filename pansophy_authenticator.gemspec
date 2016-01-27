@@ -9,8 +9,12 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Alessandro Berardi']
   spec.email         = ['berardialessandro@gmail.com']
 
-  spec.summary       = 'TODO: Write a short summary, because Rubygems requires one.'
-  spec.description   = 'TODO: Write a longer description or delete this line.'
+  spec.summary       = 'Inter application authentication via central authority'
+  spec.description   = 'By configuring a set of applications authentication keys in a file'\
+                       'stored in an S3 bucket, applications can authenticate with each other'\
+                       'by submitting their authentication key, which the receiver can match'\
+                       'against the key stored in S3.'\
+                       'S3 becomes then a central authentication authority.'
   spec.homepage      = 'https://github.com/sealink/pansophy_authenticator'
   spec.license       = 'MIT'
 
