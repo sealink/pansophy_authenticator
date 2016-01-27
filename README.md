@@ -2,6 +2,11 @@
 
 Centralised application authentication via S3
 
+By configuring a set of applications authentication keys in a file stored in an S3 bucket, 
+applications can authenticate with each other by submitting their authentication key, 
+which the receiver can match against the key stored in S3.
+S3 becomes then a central authentication authority.
+
 ## Installation
 
 Add this line to your application's Gemfile:
