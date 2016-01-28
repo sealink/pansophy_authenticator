@@ -34,4 +34,7 @@ RSpec.configure do |config|
   end
 end
 
+require 'dotenv'
+Dotenv.load(Pathname.new(__FILE__).expand_path.dirname.join('.env.test'))
+
 require 'pansophy_authenticator'
