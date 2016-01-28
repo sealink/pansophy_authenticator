@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'memoizable'
+require 'yamload'
 
 module PansophyAuthenticator
   module Configuration
