@@ -16,7 +16,7 @@ module PansophyAuthenticator
       private
 
       def local
-        local = ENV.fetch('PANSOPHY_AUTHENTICATOR_LOCAL') { @base_configuration.local? }
+        local = ENV.fetch('PANSOPHY_AUTHENTICATOR_LOCAL') { @base_configuration.local }
         local.to_s == 'true'
       end
 

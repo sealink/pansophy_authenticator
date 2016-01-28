@@ -23,7 +23,7 @@ module PansophyAuthenticator
       private
 
       def local
-        content.fetch('local') { @base_configuration.local? }
+        content.fetch('local') { @base_configuration.local }
       end
 
       def bucket_name

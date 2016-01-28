@@ -7,10 +7,6 @@ module PansophyAuthenticator
         from_env
       end
 
-      def local?
-        !!@local
-      end
-
       private
 
       def base_config
