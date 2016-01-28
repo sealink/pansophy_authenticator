@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+  - 1.9
+  - 2.0
+  - 2.1
+  - 2.2
+  - 2.3.0 # The version of RVM installed on Travis doesn't yet recognise 2.3 as an alias of 2.3.0
+before_install: gem install bundler -v 1.11.2
+notifications:
+  email:
+    - support@travellink.com.au
+  flowdock:
+    secure: X54gP0PjRDh289791y3jqYryuiWX6RNTNvxpzMVU0l3sw4JwxgjlfGG+VCYtje06D9rd3KJeostko1dqpP6RFiZCcOgd/zjsexP0JokD1e42hM2FTFCu7cMAn+VeWSN42NWTFp+8YIpcKbITiywkIREzHjXXW6jthh6aFEoMUD7u4qUy71iL2gGLlOwIL8IfUAljn1bDAr5w5yFSQvhywldG8QDvHavlH5YEXqNnMypxQT8EGtKtHA1xO6k3JyzVYeZJxmy+ZkmsgOcEAAWSecXpNtMDQIM6V789rML3S86CtyoK3ti7ndMdYx37ff112pmANr8TjFYRBD7Zjn1xfFFd90G8mFcOiYBMKTz1rds8j2UtxcirBxR9T8Hf4xn9LurCyqhKIIml0XAE3pRs3fa4HVzNOZElf8sMPDhWCFBW/BqKlt/e/HIsBBMxZWg6i+mWMJWptkiKWTTxBQYNtoX5pscCW1xxlIM55LUJrWM88vOCaMiM3UYaDIGo35c9cXQZRa86tdjDQhWbyPExpW8L87XGByro7KrN/pQqjPHEL7GVlwGlrRSzS5f8fdLdydAWOwgy0q3D9Rsydy4WPsuVBUM6MmTAD7w41UeyF0aa/Rt8IvG8hCnr2NLS62VHx3rjnLpL4Jrz2XRUgQM/zUmWD2hb8M8iVevUMeLZTms=
