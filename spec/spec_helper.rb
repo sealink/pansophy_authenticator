@@ -27,13 +27,6 @@ unless ENV['COVERAGE'] == 'off'
   end
 end
 
-RSpec.configure do |config|
-  config.before :suite do
-    # -- Configure yamload --
-    Yamload.dir = Pathname.new(__FILE__).expand_path.dirname
-  end
-end
-
 require 'dotenv'
 Dotenv.load(Pathname.new(__FILE__).expand_path.dirname.join('.env.test'))
 
