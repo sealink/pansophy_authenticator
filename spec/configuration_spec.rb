@@ -29,6 +29,7 @@ describe PansophyAuthenticator do
         ENV['PANSOPHY_AUTHENTICATOR_APPLICATION'] = nil
       end
 
+      specify { expect(PansophyAuthenticator).not_to be_remote }
       it { is_expected.to be_local }
       specify { expect(configuration.bucket_name).to eq bucket_name }
       specify { expect(configuration.file_path).to eq file_path }
@@ -37,6 +38,7 @@ describe PansophyAuthenticator do
 
     shared_examples 'a configured configuration' do
       context 'when environment variables are not set' do
+        specify { expect(PansophyAuthenticator).to be_remote }
         it { is_expected.to be_remote }
         specify { expect(configuration.bucket_name).to eq bucket_name }
         specify { expect(configuration.file_path).to eq file_path }
