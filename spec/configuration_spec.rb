@@ -2,24 +2,33 @@ require 'spec_helper'
 
 describe PansophyAuthenticator do
   context 'its configuration' do
+    subject(:configuration)   { PansophyAuthenticator.configuration }
+    let(:configuration_block) { ->(configuration) {} }
+
     shared_examples 'a configuration via environment variables' do
-      context 'when environment variables are set' do
-        before do
-          ENV['PANSOPHY_AUTHENTICATOR_LOCAL']       = 'true'
-          ENV['PANSOPHY_AUTHENTICATOR_BUCKET_NAME'] = 'none'
-          ENV['PANSOPHY_AUTHENTICATOR_FILE_PATH']   = 'local_app_keys.yml'
-        end
+      let(:local)       { 'true' }
+      let(:bucket_name) { 'none' }
+      let(:file_path)   { 'local_app_keys.yml' }
 
-        after do
-          ENV['PANSOPHY_AUTHENTICATOR_LOCAL']       = nil
-          ENV['PANSOPHY_AUTHENTICATOR_BUCKET_NAME'] = nil
-          ENV['PANSOPHY_AUTHENTICATOR_FILE_PATH']   = nil
-        end
-
-        it { is_expected.to be_local }
-        specify { expect(configuration.bucket_name).to eq 'none' }
-        specify { expect(configuration.file_path).to eq 'local_app_keys.yml' }
+      before do
+        ENV['PANSOPHY_AUTHENTICATOR_LOCAL']       = local
+        ENV['PANSOPHY_AUTHENTICATOR_BUCKET_NAME'] = bucket_name
+        ENV['PANSOPHY_AUTHENTICATOR_FILE_PATH']   = file_path
       end
+
+      before do
+        PansophyAuthenticator.configure &configuration_block
+      end
+
+      after do
+        ENV['PANSOPHY_AUTHENTICATOR_LOCAL']       = nil
+        ENV['PANSOPHY_AUTHENTICATOR_BUCKET_NAME'] = nil
+        ENV['PANSOPHY_AUTHENTICATOR_FILE_PATH']   = nil
+      end
+
+      it { is_expected.to be_local }
+      specify { expect(configuration.bucket_name).to eq bucket_name }
+      specify { expect(configuration.file_path).to eq file_path }
     end
 
     shared_examples 'a configured configuration' do
@@ -29,20 +38,25 @@ describe PansophyAuthenticator do
         specify { expect(configuration.file_path).to eq file_path }
       end
 
-      it_behaves_like 'a configuration via environment variables'
+      context 'when environment variables are set' do
+        it_behaves_like 'a configuration via environment variables'
+      end
     end
 
+    before do
+      PansophyAuthenticator.configure &configuration_block
+    end
 
     context 'when not configured' do
-      subject(:configuration) { PansophyAuthenticator.configure }
-
       context 'when environment variables are not set' do
         it { is_expected.to be_remote }
         specify { expect(configuration.bucket_name).to be_nil }
         specify { expect(configuration.file_path).to be_nil }
       end
 
-      it_behaves_like 'a configuration via environment variables'
+      context 'when environment variables are set' do
+        it_behaves_like 'a configuration via environment variables'
+      end
     end
 
     context 'when configured' do
@@ -51,22 +65,22 @@ describe PansophyAuthenticator do
       let(:file_path) { 'config/app_keys.yml' }
 
       context 'without a configuration path' do
-        subject(:configuration) {
-          PansophyAuthenticator.configure do |configuration|
+        let(:configuration_block) {
+          ->(configuration) {
             configuration.local       = local
             configuration.bucket_name = bucket_name
             configuration.file_path   = file_path
-          end
+          }
         }
 
         it_behaves_like 'a configured configuration'
       end
 
       context 'with a configuration path' do
-        subject(:configuration) {
-          PansophyAuthenticator.configure do |configuration|
+        let(:configuration_block) {
+          ->(configuration) {
             configuration.configuration_path = configuration_path
-          end
+          }
         }
 
         context 'with a configuration folder' do
