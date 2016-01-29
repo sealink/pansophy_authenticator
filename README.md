@@ -25,7 +25,60 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Configuration
+
+PansophyAuthenticator has three levels of configuration:
+
+* Via environment variables
+    
+    ```bash
+    PANSOPHY_AUTHENTICATOR_LOCAL=false
+    PANSOPHY_AUTHENTICATOR_BUCKET_NAME=my_bucket
+    PANSOPHY_AUTHENTICATOR_FILE_PATH=config/app_keys.yml
+    ```
+    
+* Via a configuration file
+
+    ```ruby
+    PansophyAuthenticator.configure do |configuration|
+      basedir = Pathname.new(__FILE__).expand_path.dirname.parent
+      configuration.configuration_path = basedir.join('config').join('authenticator.yml')
+    end
+    ```
+    Note: If the file name is omitted, it will default to ``pansophy_authenticator.yml``
+
+    ``authenticator.yml`` :
+    ```yaml
+    ---
+    bucket_name: 'my_bucket'
+    file_path: 'config/app_keys.yml'
+    ```
+    
+* Via the configurator
+    
+    ```ruby
+    PansophyAuthenticator.configure do |configuration|
+      configuration.local       = false
+      configuration.bucket_name = 'my_bucket'
+      configuration.file_path   = 'config/app_keys.yml'
+    end
+    ```
+
+Each level has precedence on the next, i.e. environment variables will have precedence over file based configuration, which, in turn, will have precedence over the configurator
+
+The configuration options are:
+
+* *local* true if the location of the application keys file is on the local host
+* *bucket_name* the name of the bucket in S3 where the application keys file is kept
+* *file_path* the remote or local path to the application keys file
+
+When working in remote mode (``local = false``), AWS access environment variables must be set, e.g.:
+    
+```bash
+AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+AWS_REGION=ap-southeast-2
+```
 
 ## Development
 
