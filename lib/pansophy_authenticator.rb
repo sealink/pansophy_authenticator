@@ -19,3 +19,7 @@ module PansophyAuthenticator
 end
 
 require 'pansophy_authenticator/configuration'
+require 'pansophy_authenticator/application_keys'
+require 'pansophy_authenticator/matcher'
+require 'pansophy_authenticator/local'
+require 'pansophy_authenticator/remote'
