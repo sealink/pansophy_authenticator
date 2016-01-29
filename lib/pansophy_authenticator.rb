@@ -19,7 +19,11 @@ module PansophyAuthenticator
     ApplicationKeys.own
   end
 
-  %i(key valid? validate!).each do |method|
+  def self.authenticate!(application, key)
+    ApplicationKeys.validate!(application, key)
+  end
+
+  %i(key valid?).each do |method|
     define_singleton_method(method) { |*args| ApplicationKeys.send(method, *args) }
   end
 

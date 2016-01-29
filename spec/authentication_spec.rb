@@ -71,7 +71,9 @@ describe PansophyAuthenticator do
 
     context 'when validating the key of the remote application' do
       let(:pansophy_authenticator) { PansophyAuthenticator }
-      subject(:validate) { pansophy_authenticator.validate!(remote_application, remote_app_key) }
+      subject(:validate) {
+        pansophy_authenticator.authenticate!(remote_application, remote_app_key)
+      }
 
       context 'if the application is defined in the keys file' do
         context 'and the key matches' do
