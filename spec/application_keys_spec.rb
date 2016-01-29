@@ -20,7 +20,7 @@ describe PansophyAuthenticator::ApplicationKeys do
 
   shared_examples 'an application key authenticator' do
     context 'when retrieving the key of the local application' do
-      subject(:own_key) { PansophyAuthenticator::ApplicationKeys.own }
+      subject(:own_key) { PansophyAuthenticator.own_key }
 
       context 'if the application is defined in the keys file' do
         it { is_expected.to eq local_app_key }
@@ -34,7 +34,7 @@ describe PansophyAuthenticator::ApplicationKeys do
     end
 
     context 'when retrieving the key of the remote application' do
-      subject(:remote_key) { PansophyAuthenticator::ApplicationKeys.key(remote_application) }
+      subject(:remote_key) { PansophyAuthenticator.key(remote_application) }
 
       context 'if the application is defined in the keys file' do
         it { is_expected.to eq remote_app_key }
@@ -48,8 +48,8 @@ describe PansophyAuthenticator::ApplicationKeys do
     end
 
     context 'when checking the validity of the key of the remote application' do
-      let(:application_keys) { PansophyAuthenticator::ApplicationKeys }
-      subject(:valid) { application_keys.valid?(remote_application, remote_app_key) }
+      let(:pansophy_authenticator) { PansophyAuthenticator }
+      subject(:valid) { pansophy_authenticator.valid?(remote_application, remote_app_key) }
 
       context 'if the application is defined in the keys file' do
         context 'and the key matches' do
@@ -70,8 +70,8 @@ describe PansophyAuthenticator::ApplicationKeys do
     end
 
     context 'when validating the key of the remote application' do
-      let(:application_keys) { PansophyAuthenticator::ApplicationKeys }
-      subject(:validate) { application_keys.validate!(remote_application, remote_app_key) }
+      let(:pansophy_authenticator) { PansophyAuthenticator }
+      subject(:validate) { pansophy_authenticator.validate!(remote_application, remote_app_key) }
 
       context 'if the application is defined in the keys file' do
         context 'and the key matches' do

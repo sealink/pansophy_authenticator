@@ -15,6 +15,14 @@ module PansophyAuthenticator
     configuration.remote?
   end
 
+  def self.own_key
+    ApplicationKeys.own
+  end
+
+  %i(key valid? validate!).each do |method|
+    define_singleton_method(method) { |*args| ApplicationKeys.send(method, *args) }
+  end
+
   class Error < StandardError; end
 end
 
