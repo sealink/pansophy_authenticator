@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PansophyAuthenticator::ApplicationKeys do
+describe PansophyAuthenticator do
   before do
     PansophyAuthenticator.configure do |configuration|
       configuration.local       = local
