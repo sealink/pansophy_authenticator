@@ -14,6 +14,8 @@ module PansophyAuthenticator
   def self.remote?
     configuration.remote?
   end
+
+  class Error < StandardError; end
 end
 
 require 'pansophy_authenticator/configuration'
