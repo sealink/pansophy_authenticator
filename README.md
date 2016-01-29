@@ -2,7 +2,7 @@
 
 [![Gem Version](https://badge.fury.io/rb/pansophy_authenticator.svg)](http://badge.fury.io/rb/pansophy_authenticator)
 [![Build Status](https://travis-ci.org/sealink/pansophy_authenticator.svg?branch=master)](https://travis-ci.org/sealink/pansophy_authenticator)
-[![Coverage Status](https://coveralls.io/repos/sealink/pansophy_authenticator/badge.svg)](https://coveralls.io/r/sealink/pansophy_authenticator)
+[![Coverage Status](https://coveralls.io/repos/github/sealink/pansophy_authenticator/badge.svg?branch=master)](https://coveralls.io/github/sealink/pansophy_authenticator?branch=master)
 [![Dependency Status](https://gemnasium.com/sealink/pansophy_authenticator.svg)](https://gemnasium.com/sealink/pansophy_authenticator)
 [![Code Climate](https://codeclimate.com/github/sealink/pansophy_authenticator/badges/gpa.svg)](https://codeclimate.com/github/sealink/pansophy_authenticator)
 
