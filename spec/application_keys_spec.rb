@@ -99,4 +99,24 @@ describe PansophyAuthenticator::ApplicationKeys do
 
     it_behaves_like 'an application key authenticator'
   end
+
+  context 'when PansophyAuthenticator is configured as remote' do
+    let(:local) { false }
+    let(:file_path) { Pathname.new('config').expand_path.join(super()) }
+
+    let(:pansophy) { double }
+    let(:remote_content) {
+      {
+        local_application => local_app_key,
+        remote_application => remote_app_key
+      }
+    }
+
+    before do
+      stub_const('Pansophy', pansophy)
+      allow(pansophy).to receive(:read).with(bucket_name, file_path).and_return(remote_content)
+    end
+
+    it_behaves_like 'an application key authenticator'
+  end
 end
