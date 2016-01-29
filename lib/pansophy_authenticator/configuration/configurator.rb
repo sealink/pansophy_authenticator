@@ -1,7 +1,7 @@
 module PansophyAuthenticator
   module Configuration
     class Configurator
-      attr_accessor :local, :bucket_name, :file_path, :configuration_path
+      attr_accessor :local, :bucket_name, :file_path, :configuration_path, :application
 
       def configuration
         from_env

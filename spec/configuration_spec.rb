@@ -9,11 +9,13 @@ describe PansophyAuthenticator do
       let(:local)       { 'true' }
       let(:bucket_name) { 'none' }
       let(:file_path)   { 'local_app_keys.yml' }
+      let(:application) { 'my_app' }
 
       before do
         ENV['PANSOPHY_AUTHENTICATOR_LOCAL']       = local
         ENV['PANSOPHY_AUTHENTICATOR_BUCKET_NAME'] = bucket_name
         ENV['PANSOPHY_AUTHENTICATOR_FILE_PATH']   = file_path
+        ENV['PANSOPHY_AUTHENTICATOR_APPLICATION'] = application
       end
 
       before do
@@ -24,11 +26,13 @@ describe PansophyAuthenticator do
         ENV['PANSOPHY_AUTHENTICATOR_LOCAL']       = nil
         ENV['PANSOPHY_AUTHENTICATOR_BUCKET_NAME'] = nil
         ENV['PANSOPHY_AUTHENTICATOR_FILE_PATH']   = nil
+        ENV['PANSOPHY_AUTHENTICATOR_APPLICATION'] = nil
       end
 
       it { is_expected.to be_local }
       specify { expect(configuration.bucket_name).to eq bucket_name }
       specify { expect(configuration.file_path).to eq file_path }
+      specify { expect(configuration.application).to eq application }
     end
 
     shared_examples 'a configured configuration' do
@@ -36,6 +40,7 @@ describe PansophyAuthenticator do
         it { is_expected.to be_remote }
         specify { expect(configuration.bucket_name).to eq bucket_name }
         specify { expect(configuration.file_path).to eq file_path }
+        specify { expect(configuration.application).to eq application }
       end
 
       context 'when environment variables are set' do
@@ -52,6 +57,7 @@ describe PansophyAuthenticator do
         it { is_expected.to be_remote }
         specify { expect(configuration.bucket_name).to be_nil }
         specify { expect(configuration.file_path).to be_nil }
+        specify { expect(configuration.application).to be_nil }
       end
 
       context 'when environment variables are set' do
@@ -60,9 +66,10 @@ describe PansophyAuthenticator do
     end
 
     context 'when configured' do
-      let(:local) { false }
+      let(:local)       { false }
       let(:bucket_name) { 'test' }
-      let(:file_path) { 'config/app_keys.yml' }
+      let(:file_path)   { 'config/app_keys.yml' }
+      let(:application) { 'my_app' }
 
       context 'without a configuration path' do
         let(:configuration_block) {
@@ -70,6 +77,7 @@ describe PansophyAuthenticator do
             configuration.local       = local
             configuration.bucket_name = bucket_name
             configuration.file_path   = file_path
+            configuration.application = application
           }
         }
 
@@ -95,7 +103,8 @@ describe PansophyAuthenticator do
               .join('custom_config.yml')
           }
           let(:bucket_name) { 'custom' }
-          let(:file_path) { 'custom_config/custom_app_keys.yml' }
+          let(:file_path)   { 'custom_config/custom_app_keys.yml' }
+          let(:application) { 'custom_app' }
           it_behaves_like 'a configured configuration'
         end
       end

@@ -1,3 +1,4 @@
 ---
 bucket_name: 'custom'
-file_path: 'custom_config/custom_app_keys.yml'
+file_path:   'custom_config/custom_app_keys.yml'
+application: 'custom_app'
