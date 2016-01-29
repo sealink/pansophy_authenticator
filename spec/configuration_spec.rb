@@ -3,7 +3,7 @@ require 'spec_helper'
 describe PansophyAuthenticator do
   context 'its configuration' do
     subject(:configuration)   { PansophyAuthenticator.configuration }
-    let(:configuration_block) { ->(configuration) {} }
+    let(:configuration_block) { ->(_configuration) {} }
 
     shared_examples 'a configuration via environment variables' do
       let(:local)       { 'true' }
