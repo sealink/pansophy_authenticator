@@ -10,6 +10,10 @@ module PansophyAuthenticator
   def self.configuration
     @configuration ||= configure
   end
+
+  def self.remote?
+    configuration.remote?
+  end
 end
 
 require 'pansophy_authenticator/configuration'
