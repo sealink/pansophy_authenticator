@@ -41,6 +41,7 @@ PansophyAuthenticator has three levels of configuration:
     PANSOPHY_AUTHENTICATOR_LOCAL=false
     PANSOPHY_AUTHENTICATOR_BUCKET_NAME=my_bucket
     PANSOPHY_AUTHENTICATOR_FILE_PATH=config/app_keys.yml
+    PANSOPHY_AUTHENTICATOR_APPLICATION=my_app
     ```
     
 * Via a configuration file
@@ -57,7 +58,8 @@ PansophyAuthenticator has three levels of configuration:
     ```yaml
     ---
     bucket_name: 'my_bucket'
-    file_path: 'config/app_keys.yml'
+    file_path:   'config/app_keys.yml'
+    application: 'my_app'
     ```
     
 * Via the configurator
@@ -67,6 +69,7 @@ PansophyAuthenticator has three levels of configuration:
       configuration.local       = false
       configuration.bucket_name = 'my_bucket'
       configuration.file_path   = 'config/app_keys.yml'
+      configuration.application = 'my_app'
     end
     ```
 
@@ -77,6 +80,7 @@ The configuration options are:
 * *local* true if the location of the application keys file is on the local host
 * *bucket_name* the name of the bucket in S3 where the application keys file is kept
 * *file_path* the remote or local path to the application keys file
+* *application* the identifier of the current application in the application keys file
 
 When working in remote mode (``local = false``), AWS access environment variables must be set, e.g.:
     

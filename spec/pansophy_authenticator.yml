@@ -1,3 +1,4 @@
 ---
 bucket_name: 'test'
-file_path: 'config/app_keys.yml'
+file_path:   'config/app_keys.yml'
+application: 'my_app'

@@ -3,7 +3,7 @@ require 'anima'
 module PansophyAuthenticator
   module Configuration
     class Instance
-      include Anima.new(:local, :bucket_name, :file_path)
+      include Anima.new(:local, :bucket_name, :file_path, :application)
 
       def local?
         @local

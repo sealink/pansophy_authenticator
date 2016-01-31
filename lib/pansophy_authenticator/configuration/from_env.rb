@@ -9,7 +9,8 @@ module PansophyAuthenticator
         Instance.new(
           local:       local,
           bucket_name: bucket_name,
-          file_path:   file_path
+          file_path:   file_path,
+          application: application
         )
       end
 
@@ -26,6 +27,10 @@ module PansophyAuthenticator
 
       def file_path
         ENV.fetch('PANSOPHY_AUTHENTICATOR_FILE_PATH') { @base_configuration.file_path }
+      end
+
+      def application
+        ENV.fetch('PANSOPHY_AUTHENTICATOR_APPLICATION') { @base_configuration.application }
       end
     end
   end
