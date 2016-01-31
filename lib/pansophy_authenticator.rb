@@ -27,7 +27,7 @@ module PansophyAuthenticator
     define_singleton_method(method) { |*args| ApplicationKeys.send(method, *args) }
   end
 
-  class Error < StandardError; end
+  Error = Class.new(StandardError)
 end
 
 require 'pansophy_authenticator/configuration'
