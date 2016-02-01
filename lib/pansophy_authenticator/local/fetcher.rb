@@ -28,11 +28,11 @@ module PansophyAuthenticator
       def content
         loader.content
       end
-      memoize :content
 
       def loader
         Yamload::Loader.new(filename, dirname)
       end
+      memoize :loader
 
       def configuration
         PansophyAuthenticator.configuration
