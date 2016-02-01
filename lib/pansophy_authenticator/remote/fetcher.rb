@@ -3,11 +3,10 @@ require 'pansophy'
 module PansophyAuthenticator
   module Remote
     class Fetcher
-
       def keys
         @keys ||= fetch
       end
-      
+
       private
 
       def fetch
