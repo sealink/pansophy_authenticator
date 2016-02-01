@@ -1,11 +1,9 @@
-require 'singleton'
 require 'memoizable'
 require 'yamload'
 
 module PansophyAuthenticator
   module Local
     class Fetcher
-      include Singleton
       include Memoizable
 
       def keys
