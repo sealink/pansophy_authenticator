@@ -27,14 +27,14 @@ module PansophyAuthenticator
     private
 
     def matcher(application)
-      Matcher.new(retriever.instance.keys, application)
+      Matcher.new(fetcher.instance.keys, application)
     end
 
-    def retriever
+    def fetcher
       if PansophyAuthenticator.remote?
-        Remote::ApplicationKeys
+        Remote::Fetcher
       else
-        Local::ApplicationKeys
+        Local::Fetcher
       end
     end
 

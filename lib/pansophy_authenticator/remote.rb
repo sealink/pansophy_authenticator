@@ -3,4 +3,4 @@ module PansophyAuthenticator
   end
 end
 
-require 'pansophy_authenticator/remote/application_keys'
+require 'pansophy_authenticator/remote/fetcher'

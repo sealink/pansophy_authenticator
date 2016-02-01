@@ -4,7 +4,7 @@ require 'yamload'
 
 module PansophyAuthenticator
   module Local
-    class ApplicationKeys
+    class Fetcher
       include Singleton
       include Memoizable
 

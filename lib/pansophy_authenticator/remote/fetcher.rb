@@ -4,7 +4,7 @@ require 'pansophy'
 
 module PansophyAuthenticator
   module Remote
-    class ApplicationKeys
+    class Fetcher
       include Singleton
       include Memoizable
 

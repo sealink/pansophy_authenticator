@@ -3,4 +3,4 @@ module PansophyAuthenticator
   end
 end
 
-require 'pansophy_authenticator/local/application_keys'
+require 'pansophy_authenticator/local/fetcher'
