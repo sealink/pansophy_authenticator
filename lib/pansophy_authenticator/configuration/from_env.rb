@@ -5,17 +5,6 @@ module PansophyAuthenticator
         @base_configuration = base_configuration
       end
 
-      def configuration
-        Instance.new(
-          local:       local,
-          bucket_name: bucket_name,
-          file_path:   file_path,
-          application: application
-        )
-      end
-
-      private
-
       def local
         local = ENV.fetch('PANSOPHY_AUTHENTICATOR_LOCAL') { @base_configuration.local }
         local.to_s == 'true'

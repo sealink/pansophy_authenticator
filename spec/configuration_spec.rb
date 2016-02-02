@@ -110,6 +110,21 @@ describe PansophyAuthenticator do
           it_behaves_like 'a configured configuration'
         end
       end
+
+      context 'with a cache store' do
+        let(:cache_store) { double }
+        let(:configuration_block) {
+          ->(configuration) {
+            configuration.cache_store = cache_store
+          }
+        }
+        specify { expect(configuration.cache_store).to be cache_store }
+      end
+
+      context 'without a cache store' do
+        let(:cache_store) { PansophyAuthenticator::CacheStores::Memory }
+        specify { expect(configuration.cache_store).to be_a cache_store }
+      end
     end
   end
 end
