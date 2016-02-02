@@ -8,6 +8,10 @@ module PansophyAuthenticator
         build_configuration
       end
 
+      def cache_store
+        @cache_store ||= CacheStores::Memory.new
+      end
+
       private
 
       def build_configuration
@@ -15,7 +19,8 @@ module PansophyAuthenticator
           local:       config_values.local,
           bucket_name: config_values.bucket_name,
           file_path:   config_values.file_path,
-          application: config_values.application
+          application: config_values.application,
+          cache_store: cache_store
         )
       end
 
