@@ -13,17 +13,6 @@ module PansophyAuthenticator
         @base_configuration = base_configuration
       end
 
-      def configuration
-        Instance.new(
-          local:       local,
-          bucket_name: bucket_name,
-          file_path:   file_path,
-          application: application
-        )
-      end
-
-      private
-
       def local
         content.fetch('local') { @base_configuration.local }
       end
@@ -39,6 +28,8 @@ module PansophyAuthenticator
       def application
         content.fetch('application') { @base_configuration.application }
       end
+
+      private
 
       def pathname
         Pathname.new(@base_configuration.configuration_path)

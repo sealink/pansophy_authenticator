@@ -4,7 +4,7 @@ module PansophyAuthenticator
   class ApplicationKeys
     include Singleton
 
-    %i(own key valid? validate!).each do |method|
+    %i(own key valid? validate! clear_cache).each do |method|
       define_singleton_method(method) { |*args| instance.send(method, *args) }
     end
 
@@ -24,17 +24,29 @@ module PansophyAuthenticator
       matcher(application).validate!(key)
     end
 
+    def clear_cache
+      cache.delete
+    end
+
     private
 
     def matcher(application)
-      Matcher.new(retriever.instance.keys, application)
+      Matcher.new(keys, application)
     end
 
-    def retriever
+    def keys
+      cache.fetch { fetcher.keys }
+    end
+
+    def cache
+      Cache.new(configuration.cache_store)
+    end
+
+    def fetcher
       if PansophyAuthenticator.remote?
-        Remote::ApplicationKeys
+        Remote::Fetcher.new
       else
-        Local::ApplicationKeys
+        Local::Fetcher.new
       end
     end
 

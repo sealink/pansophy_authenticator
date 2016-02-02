@@ -90,6 +90,48 @@ AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 AWS_REGION=ap-southeast-2
 ```
 
+### Caching
+
+By default application keys are cached in memory
+
+The cache can be cleared, forcing the keys to be fetched again on the next request, by calling
+
+```ruby
+PansophyAuthenticator.clear_cached_keys
+```
+
+A different cache store can be specified during initial configuration
+
+```ruby
+PansophyAuthenticator.configure do |configuration|
+  # ... previous configuration options
+  configuration.cache_store = MyCacheStore.new
+end
+```
+
+A cache store must respond to the following methods:
+
+```ruby
+class MyCacheStore
+  def read(key)
+    # Fetches data from the cache, using the given key. 
+    # Returns the data if its in the cache with the given key, nil otherwise.
+  end
+
+  def write(key, value)
+    # Writes the value to the cache for the given key.
+  end
+
+  def delete(key)
+    # Deletes the entry in the cache for the given key.
+  end
+
+  def exist?(key)
+    # Returns true if the cache contains an entry for the given key, false otherwise.
+  end
+end
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

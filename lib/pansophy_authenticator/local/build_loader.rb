@@ -1,15 +1,13 @@
-require 'singleton'
 require 'memoizable'
 require 'yamload'
 
 module PansophyAuthenticator
   module Local
-    class ApplicationKeys
-      include Singleton
+    class BuildLoader
       include Memoizable
 
-      def keys
-        content
+      def call
+        Yamload::Loader.new(filename, dirname)
       end
 
       private
@@ -25,15 +23,6 @@ module PansophyAuthenticator
 
       def filename
         pathname.basename('.yml')
-      end
-
-      def content
-        loader.content
-      end
-      memoize :content
-
-      def loader
-        Yamload::Loader.new(filename, dirname)
       end
 
       def configuration
