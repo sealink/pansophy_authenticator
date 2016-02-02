@@ -8,9 +8,10 @@ unless ENV['COVERAGE'] == 'off'
   require 'coveralls'
   Coveralls.wear!
 
-  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
-    [SimpleCov::Formatter::RcovFormatter, Coveralls::SimpleCov::Formatter]
-  )
+  SimpleCov.formatters = [
+    SimpleCov::Formatter::RcovFormatter,
+    Coveralls::SimpleCov::Formatter
+  ]
   SimpleCov.start do
     add_filter '/vendor/'
     add_filter '/spec/'
