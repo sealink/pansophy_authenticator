@@ -1,3 +1,5 @@
+# rubocop:disable Style/BlockDelimiters
+
 require 'spec_helper'
 
 describe PansophyAuthenticator::CacheStores::Memory do
