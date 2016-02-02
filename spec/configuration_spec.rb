@@ -19,7 +19,7 @@ describe PansophyAuthenticator do
       end
 
       before do
-        PansophyAuthenticator.configure &configuration_block
+        PansophyAuthenticator.configure(&configuration_block)
       end
 
       after do
@@ -51,7 +51,7 @@ describe PansophyAuthenticator do
     end
 
     before do
-      PansophyAuthenticator.configure &configuration_block
+      PansophyAuthenticator.configure(&configuration_block)
     end
 
     context 'when not configured' do
@@ -75,7 +75,7 @@ describe PansophyAuthenticator do
 
       context 'without a configuration path' do
         let(:configuration_block) {
-          ->(configuration) {
+          lambda { |configuration|
             configuration.local       = local
             configuration.bucket_name = bucket_name
             configuration.file_path   = file_path
@@ -88,9 +88,7 @@ describe PansophyAuthenticator do
 
       context 'with a configuration path' do
         let(:configuration_block) {
-          ->(configuration) {
-            configuration.configuration_path = configuration_path
-          }
+          ->(configuration) { configuration.configuration_path = configuration_path }
         }
 
         context 'with a configuration folder' do
@@ -101,8 +99,8 @@ describe PansophyAuthenticator do
         context 'with a configuration file' do
           let(:configuration_path) {
             Pathname.new(__FILE__).expand_path.dirname
-              .join('configuration_test')
-              .join('custom_config.yml')
+                    .join('configuration_test')
+                    .join('custom_config.yml')
           }
           let(:bucket_name) { 'custom' }
           let(:file_path)   { 'custom_config/custom_app_keys.yml' }
@@ -114,9 +112,7 @@ describe PansophyAuthenticator do
       context 'with a cache store' do
         let(:cache_store) { double }
         let(:configuration_block) {
-          ->(configuration) {
-            configuration.cache_store = cache_store
-          }
+          ->(configuration) { configuration.cache_store = cache_store }
         }
         specify { expect(configuration.cache_store).to be cache_store }
       end

@@ -37,7 +37,7 @@ describe PansophyAuthenticator do
       end
 
       context 'if the application is not defined in the keys file' do
-        let(:local_application)  { 'wrong_app' }
+        let(:local_application) { 'wrong_app' }
         let(:error_message) { "#{local_application} is not defined" }
         specify { expect { own_key }.to raise_error PansophyAuthenticator::Error, error_message }
       end
