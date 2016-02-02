@@ -94,13 +94,13 @@ AWS_REGION=ap-southeast-2
 
 By default application keys are cached in memory
 
-The cache can be cleared, forcing a new fetch of the keys on the next request, by calling
+The cache can be cleared, forcing the keys to be fetched again on the next request, by calling
 
 ```ruby
 PansophyAuthenticator.clear_cached_keys
 ```
 
-A different cache store can be specified when configuring
+A different cache store can be specified during initial configuration
 
 ```ruby
 PansophyAuthenticator.configure do |configuration|
