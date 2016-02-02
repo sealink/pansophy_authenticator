@@ -109,7 +109,7 @@ PansophyAuthenticator.configure do |configuration|
 end
 ```
 
-An cache store must respond to the following methods:
+A cache store must respond to the following methods:
 
 ```ruby
 class MyCacheStore
