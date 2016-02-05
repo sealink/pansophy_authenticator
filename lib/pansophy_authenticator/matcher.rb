@@ -6,7 +6,7 @@ module PansophyAuthenticator
     end
 
     def validate!(given_key)
-      fail Error, "Invalid key for #{@application}" unless valid?(given_key)
+      fail Error, 'Invalid application or key' unless valid?(given_key)
     end
 
     def valid?(given_key)
