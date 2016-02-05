@@ -15,7 +15,7 @@ module PansophyAuthenticator
     end
 
     def key
-      fail Error, "#{@application} is not defined" unless @keys.key?(@application)
+      fail Error, "#{@application} is not defined" unless valid_application?
       @keys.fetch(@application)
     end
 
