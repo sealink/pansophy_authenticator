@@ -10,12 +10,17 @@ module PansophyAuthenticator
     end
 
     def valid?(given_key)
+      return false unless valid_application?
       given_key == key
     end
 
     def key
       fail Error, "#{@application} is not defined" unless @keys.key?(@application)
       @keys.fetch(@application)
+    end
+
+    def valid_application?
+      @keys.key?(@application)
     end
   end
 end

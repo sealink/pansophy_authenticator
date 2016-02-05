@@ -91,8 +91,7 @@ describe PansophyAuthenticator do
 
       context 'if the application is not defined in the keys file' do
         let(:remote_application)  { 'wrong_app' }
-        let(:error_message) { "#{remote_application} is not defined" }
-        specify { expect { valid }.to raise_error PansophyAuthenticator::Error, error_message }
+        specify { expect(valid).to be false }
       end
     end
 
