@@ -91,8 +91,7 @@ describe PansophyAuthenticator do
 
       context 'if the application is not defined in the keys file' do
         let(:remote_application)  { 'wrong_app' }
-        let(:error_message) { "#{remote_application} is not defined" }
-        specify { expect { valid }.to raise_error PansophyAuthenticator::Error, error_message }
+        specify { expect(valid).to be false }
       end
     end
 
@@ -109,14 +108,14 @@ describe PansophyAuthenticator do
 
         context 'and the key does not match' do
           let(:remote_app_key) { 'wrong_key' }
-          let(:error_message) { "Invalid key for #{remote_application}" }
+          let(:error_message) { 'Invalid application or key' }
           specify { expect { validate }.to raise_error PansophyAuthenticator::Error, error_message }
         end
       end
 
       context 'if the application is not defined in the keys file' do
         let(:remote_application)  { 'wrong_app' }
-        let(:error_message) { "#{remote_application} is not defined" }
+        let(:error_message) { 'Invalid application or key' }
         specify { expect { validate }.to raise_error PansophyAuthenticator::Error, error_message }
       end
 
