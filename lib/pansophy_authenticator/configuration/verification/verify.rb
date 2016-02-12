@@ -7,15 +7,23 @@ module PansophyAuthenticator
         end
 
         def call
-          verifiers = [Common]
-          if @configuration.local?
-            verifiers << Local
-          else
-            verifiers << Remote
-          end
           verifiers.inject(Result.new) { |result, verifier|
             result.concat verifier.new(@configuration).verify
           }
+        end
+
+        private
+
+        def verifiers
+          [Common, specific_verifier]
+        end
+
+        def specific_verifier
+          if @configuration.local?
+            Local
+          else
+            Remote
+          end
         end
       end
     end
