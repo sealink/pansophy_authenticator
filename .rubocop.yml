@@ -9,3 +9,6 @@ Style/BlockDelimiters:
 
 Style/TrivialAccessors:
   AllowPredicates: true
+
+Style/SignalException:
+  EnforcedStyle: semantic

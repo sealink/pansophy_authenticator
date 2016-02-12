@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'memoize', '~> 1.3'
   spec.add_dependency 'anima', '~> 0.3'
+  spec.add_dependency 'adamantium', '~> 0.2'
   spec.add_dependency 'pansophy', '~> 0.3'
   spec.add_dependency 'yamload', '~> 0.2'
 
@@ -38,6 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.11'
   spec.add_development_dependency 'simplecov-rcov', '~> 0.2'
   spec.add_development_dependency 'coveralls', '~> 0.8'
-  spec.add_development_dependency 'rubocop', '~> 0.36'
+  spec.add_development_dependency 'rubocop', '~> 0.37'
   spec.add_development_dependency 'travis', '~> 1.8'
 end
