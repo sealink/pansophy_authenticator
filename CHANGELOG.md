@@ -1,13 +1,13 @@
 ## 0.2.1 (2016-02-05)
 
-Bugfixes:
+Fixes:
 
   - Security fix: be agnostic on cause of validation failure
   - Don't raise errors when checking validation via #valid?
 
 ## 0.2.0 (2016-02-02)
 
-Features:
+Adds:
 
   - caching via cache store
 
