@@ -86,6 +86,61 @@ describe PansophyAuthenticator do
         }
 
         it_behaves_like 'a configured configuration'
+
+        context 'when verifying the configuration' do
+          subject(:configuration) { PansophyAuthenticator.configuration }
+
+          it { is_expected.to be_valid }
+          specify { expect(configuration.errors).to be_empty }
+
+          shared_examples 'an invalid configuration' do
+            specify { expect(configuration).not_to be_valid }
+            specify { expect(configuration.errors).to match_array expected_errors }
+          end
+
+          context 'when the application is not defined' do
+            let(:application) { nil }
+            let(:expected_errors) { ['Application is not defined'] }
+            it_behaves_like 'an invalid configuration'
+
+            context 'when remote' do
+              context 'when the bucket name is not defined' do
+                let(:bucket_name) { nil }
+                let(:expected_errors) { super() + ['Bucket name is not defined'] }
+                it_behaves_like 'an invalid configuration'
+              end
+
+              context 'when the file path is not defined' do
+                let(:file_path) { nil }
+                let(:expected_errors) { super() + ['File path is not defined'] }
+                it_behaves_like 'an invalid configuration'
+              end
+            end
+
+            context 'when local' do
+              let(:local) { true }
+              let(:file_path) { Pathname.new(__FILE__).expand_path.dirname.join('app_keys.yml') }
+
+              context 'when the bucket name is not defined' do
+                let(:bucket_name) { nil }
+                let(:expected_errors) { super() }
+                it_behaves_like 'an invalid configuration'
+              end
+
+              context 'when the file path is not defined' do
+                let(:file_path) { nil }
+                let(:expected_errors) { super() + ['File path is not defined'] }
+                it_behaves_like 'an invalid configuration'
+              end
+
+              context 'when the file does not exist' do
+                let(:file_path) { 'non_existent' }
+                let(:expected_errors) { super() + ['non_existent does not exist'] }
+                it_behaves_like 'an invalid configuration'
+              end
+            end
+          end
+        end
       end
 
       context 'with a configuration path' do
