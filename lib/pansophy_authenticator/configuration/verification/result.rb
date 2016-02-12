@@ -14,7 +14,7 @@ module PansophyAuthenticator
           @errors.empty?
         end
 
-        def concat(other_result)
+        def +(other_result)
           transform do
             @errors += other_result.errors
           end

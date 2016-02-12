@@ -7,9 +7,7 @@ module PansophyAuthenticator
         end
 
         def call
-          verifiers.inject(Result.new) { |result, verifier|
-            result.concat verifier.new(@configuration).verify
-          }
+          verifiers.map { |verifier| verifier.new(@configuration).verify }.reduce(&:+)
         end
 
         private
