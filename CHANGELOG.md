@@ -1,3 +1,9 @@
+## 0.3.0 (2016-02-12)
+
+Adds:
+
+  - Configuration validation
+
 ## 0.2.1 (2016-02-05)
 
 Fixes:
