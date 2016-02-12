@@ -7,12 +7,16 @@ module PansophyAuthenticator
         end
 
         def verify
-          return Result.new 'File path is not defined' unless file_path?
-          return Result.new "#{file_path} does not exist" unless file_exist?
-          Result.new
+          Result.new errors
         end
 
         private
+
+        def errors
+          return ['File path is not defined'] unless file_path?
+          return ["#{file_path} does not exist"] unless file_exist?
+          []
+        end
 
         def file_path?
           !file_path.nil?
