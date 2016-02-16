@@ -15,6 +15,14 @@ module PansophyAuthenticator
     configuration.remote?
   end
 
+  def self.local?
+    configuration.local?
+  end
+
+  def self.application
+    configuration.application
+  end
+
   def self.own_key
     ApplicationKeys.own
   end
