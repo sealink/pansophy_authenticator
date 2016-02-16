@@ -1,3 +1,9 @@
+## 0.4.0 (2016-02-16)
+
+Fixes:
+
+  - Tests could be influenced by system environment variables
+
 ## 0.3.0 (2016-02-12)
 
 Adds:
@@ -15,7 +21,7 @@ Fixes:
 
 Adds:
 
-  - caching via cache store
+  - Caching via cache store
 
 ## 0.1.0 (2016-02-01)
 
