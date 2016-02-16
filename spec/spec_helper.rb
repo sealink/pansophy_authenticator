@@ -28,7 +28,7 @@ unless ENV['COVERAGE'] == 'off'
 end
 
 RSpec.configure do |config|
-  # Ensure that no environment variables from the system can influence the tests
+  # Ensure that no system environment variables can influence the tests
   config.before do
     ENV.delete 'PANSOPHY_AUTHENTICATOR_LOCAL'
     ENV.delete 'PANSOPHY_AUTHENTICATOR_BUCKET_NAME'
