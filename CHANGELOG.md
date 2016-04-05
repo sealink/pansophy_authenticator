@@ -2,6 +2,9 @@
 ### Fixed
 - Caches application keys as json to ensure compatibility with third party cache stores
 
+### Changed
+- Updates pansophy gem dependency to version ~> 0.5, >= 0.5.1
+
 ## 0.4.0 (2016-02-16)
 ### Added
 - Implements 'application' and 'local?' helper methods
