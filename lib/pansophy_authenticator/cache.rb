@@ -1,4 +1,7 @@
 # frozen_string_literal: true
+
+require 'json'
+
 module PansophyAuthenticator
   class Cache
     CACHE_KEY = 'pansophy_authenticator_application_keys'.freeze
@@ -8,11 +11,11 @@ module PansophyAuthenticator
     end
 
     def read
-      @cache_store.read CACHE_KEY
+      JSON.parse(@cache_store.read(CACHE_KEY))
     end
 
     def write(value)
-      @cache_store.write CACHE_KEY, value
+      @cache_store.write CACHE_KEY, JSON.dump(value)
     end
 
     def delete

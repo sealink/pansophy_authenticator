@@ -1,3 +1,7 @@
+## [Unreleased]
+### Fixed
+- Caches application keys as json to ensure compatibility with third party cache stores
+
 ## 0.4.0 (2016-02-16)
 ### Added
 - Implements 'application' and 'local?' helper methods

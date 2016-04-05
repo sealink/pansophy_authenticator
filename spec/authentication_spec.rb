@@ -127,23 +127,28 @@ describe PansophyAuthenticator do
   end
 
   shared_examples 'it relies on a cache store' do
-    let(:cache_key) { PansophyAuthenticator::Cache::CACHE_KEY }
-    let(:cache_store) { double('test_cache_store') }
+    let(:cache_key)     { PansophyAuthenticator::Cache::CACHE_KEY }
+    let(:cache_store)   { double('test_cache_store') }
+    let(:cached_values) { {} }
+    let(:json_app_keys) { JSON.dump(app_keys) }
 
     before do
-      allow(cache_store).to receive(:exist?).with(cache_key).and_return(cached)
-      allow(cache_store).to receive(:read).and_return(app_keys)
-      allow(cache_store).to receive(:write)
-      allow(cache_store).to receive(:delete)
+      allow(cache_store).to receive(:exist?) { |key| cached_values.key? key }
+      allow(cache_store).to receive(:read)   { |key| cached_values[key] }
+      allow(cache_store).to receive(:write)  { |key, value| cached_values[key] = value }
+      allow(cache_store).to receive(:delete) { |key| cached_values.delete(key) }
     end
 
+    let(:cache_app_keys) { cached_values[cache_key] = json_app_keys }
+
     before do
+      cache_app_keys if cached
       caching_action
     end
 
     context 'when the keys are not cached' do
       let(:cached) { false }
-      specify { expect(cache_store).to have_received(:write).once.with(cache_key, app_keys) }
+      specify { expect(cache_store).to have_received(:write).once.with(cache_key, json_app_keys) }
     end
 
     context 'when the keys are cached' do
