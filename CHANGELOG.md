@@ -1,3 +1,7 @@
+## 0.4.2 (2016-04-06)
+### Fixed
+- Updates pansophy gem dependency to >= 0.5.2
+
 ## 0.4.1 (2016-04-06)
 ### Fixed
 - Caches application keys as json to ensure compatibility with third party cache stores

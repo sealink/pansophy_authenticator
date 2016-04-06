@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'memoize', '~> 1.3'
   spec.add_dependency 'anima', '~> 0.3'
   spec.add_dependency 'adamantium', '~> 0.2'
-  spec.add_dependency 'pansophy', '~> 0.5', '>= 0.5.1'
+  spec.add_dependency 'pansophy', '~> 0.5', '>= 0.5.2'
   spec.add_dependency 'yamload', '~> 0.2'
 
   spec.add_development_dependency 'bundler', '~> 1.11'
