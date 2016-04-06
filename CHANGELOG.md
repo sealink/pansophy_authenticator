@@ -1,4 +1,4 @@
-## [Unreleased]
+## 0.4.1 (2016-04-06)
 ### Fixed
 - Caches application keys as json to ensure compatibility with third party cache stores
 
