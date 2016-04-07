@@ -10,7 +10,7 @@ module PansophyAuthenticator
       private
 
       def fetch
-        Pansophy.read(configuration.bucket_name, configuration.file_path)
+        YAML.load Pansophy.read(configuration.bucket_name, configuration.file_path)
       end
 
       def configuration

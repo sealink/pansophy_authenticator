@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).
 
+## [Unreleased]
+### Fixed
+- Loading of remote YAML application keys file now parses correctly
+
 ## [0.4.2] - 2016-04-06
 ### Fixed
 - Updates pansophy gem dependency to >= 0.5.2
