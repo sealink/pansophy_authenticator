@@ -179,9 +179,35 @@ describe PansophyAuthenticator do
 
     before do
       stub_const('Pansophy', pansophy)
-      allow(pansophy).to receive(:read).with(bucket_name, file_path).and_return(app_keys)
+      allow(pansophy).to receive(:read).with(bucket_name, file_path).and_return(remote_app_keys)
     end
 
-    it_behaves_like 'an application key authenticator'
+    context 'when the remote file is in YAML format' do
+      let(:remote_app_keys) { YAML.dump app_keys }
+
+      it_behaves_like 'an application key authenticator'
+    end
+
+    shared_examples 'it fails for invalid format' do
+      let(:own_key) { PansophyAuthenticator.own_key }
+
+      let(:expected_error_message) { 'Remote application keys file is not in a valid format' }
+
+      specify {
+        expect { own_key }.to raise_error PansophyAuthenticator::Error, expected_error_message
+      }
+    end
+
+    context 'when the remote file is not in a valid format' do
+      let(:remote_app_keys) { 'This does not represent a hash' }
+
+      it_behaves_like 'it fails for invalid format'
+    end
+
+    context 'when the remote file is not in YAML format' do
+      let(:remote_app_keys) { 'Invalid yaml: [{}{}{}]' }
+
+      it_behaves_like 'it fails for invalid format'
+    end
   end
 end
