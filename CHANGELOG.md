@@ -6,6 +6,7 @@ This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).
 ## [Unreleased]
 ### Fixed
 - Loading of remote YAML application keys file now parses correctly
+- Replaces wrong dependency from memoize to memoizable
 
 ## [0.4.2] - 2016-04-06
 ### Fixed

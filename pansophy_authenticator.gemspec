@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.1'
 
-  spec.add_dependency 'memoize', '~> 1.3'
+  spec.add_dependency 'memoizable', '~> 0.4'
   spec.add_dependency 'anima', '~> 0.3'
   spec.add_dependency 'adamantium', '~> 0.2'
   spec.add_dependency 'pansophy', '~> 0.5', '>= 0.5.2'
