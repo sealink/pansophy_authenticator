@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).
 
-## [Unreleased]
+## [0.4.3] - 2016-04-07
 ### Fixed
 - Loading of remote YAML application keys file now parses correctly
 - Replaces wrong dependency from memoize to memoizable
