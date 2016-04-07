@@ -176,10 +176,11 @@ describe PansophyAuthenticator do
     let(:file_path) { Pathname.new('config').expand_path.join(super()) }
 
     let(:pansophy) { double }
+    let(:app_keys_yaml) { YAML.dump app_keys }
 
     before do
       stub_const('Pansophy', pansophy)
-      allow(pansophy).to receive(:read).with(bucket_name, file_path).and_return(app_keys)
+      allow(pansophy).to receive(:read).with(bucket_name, file_path).and_return(app_keys_yaml)
     end
 
     it_behaves_like 'an application key authenticator'
