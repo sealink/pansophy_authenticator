@@ -1,18 +1,15 @@
 module PansophyAuthenticator
   module Configuration
-    module Verification
-      class Remote
-        def initialize(configuration)
-          @configuration = configuration
-          @result = Result.new
-        end
+    class Remote < Base
+      def verification
+        Result.new errors
+      end
 
-        def verify
-          errors = []
-          errors << 'Bucket name is not defined' if @configuration.bucket_name.nil?
-          errors << 'File path is not defined' if @configuration.file_path.nil?
-          Result.new errors
-        end
+      def errors
+        errors = super
+        errors << 'Bucket name is not defined' if @bucket_name.nil?
+        errors << 'File path is not defined' if @file_path.nil?
+        errors
       end
     end
   end

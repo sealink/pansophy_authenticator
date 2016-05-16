@@ -1,34 +1,25 @@
 module PansophyAuthenticator
   module Configuration
-    module Verification
-      class Local
-        def initialize(configuration)
-          @configuration = configuration
-        end
+    class Local < Base
+      def verification
+        Result.new errors
+      end
 
-        def verify
-          Result.new errors
-        end
+      def errors
+        errors = super
+        return errors + ['File path is not defined'] unless file_path?
+        return errors + ["#{@file_path} does not exist"] unless file_exist?
+        errors
+      end
 
-        private
+      private
 
-        def errors
-          return ['File path is not defined'] unless file_path?
-          return ["#{file_path} does not exist"] unless file_exist?
-          []
-        end
+      def file_path?
+        !@file_path.nil?
+      end
 
-        def file_path?
-          !file_path.nil?
-        end
-
-        def file_exist?
-          File.exist? file_path
-        end
-
-        def file_path
-          @configuration.file_path
-        end
+      def file_exist?
+        File.exist? @file_path
       end
     end
   end
