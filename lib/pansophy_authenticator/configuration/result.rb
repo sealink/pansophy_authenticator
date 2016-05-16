@@ -12,12 +12,6 @@ module PansophyAuthenticator
       def valid?
         @errors.empty?
       end
-
-      def +(other)
-        transform do
-          @errors += other.errors
-        end
-      end
     end
   end
 end
