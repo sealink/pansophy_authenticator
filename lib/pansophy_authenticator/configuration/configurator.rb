@@ -15,13 +15,17 @@ module PansophyAuthenticator
       private
 
       def build_configuration
-        Instance.new(
-          local:       config_values.local,
+        attrs = {
           bucket_name: config_values.bucket_name,
           file_path:   config_values.file_path,
           application: config_values.application,
           cache_store: cache_store
-        )
+        }
+        if config_values.local
+          Local.new(attrs)
+        else
+          Remote.new(attrs)
+        end
       end
 
       def config_values

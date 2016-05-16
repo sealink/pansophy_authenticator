@@ -1,23 +1,21 @@
 module PansophyAuthenticator
   module Configuration
-    module Verification
-      class Result
-        include Adamantium
+    class Result
+      include Adamantium
 
-        attr_reader :errors
+      attr_reader :errors
 
-        def initialize(errors = [])
-          @errors = Array(errors)
-        end
+      def initialize(errors = [])
+        @errors = Array(errors)
+      end
 
-        def valid?
-          @errors.empty?
-        end
+      def valid?
+        @errors.empty?
+      end
 
-        def +(other)
-          transform do
-            @errors += other.errors
-          end
+      def +(other)
+        transform do
+          @errors += other.errors
         end
       end
     end
