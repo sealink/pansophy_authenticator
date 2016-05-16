@@ -26,7 +26,7 @@ module PansophyAuthenticator
       end
 
       def configuration
-        PansophyAuthenticator.configuration
+        PansophyAuthenticator.valid_configuration
       end
     end
   end

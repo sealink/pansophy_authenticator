@@ -11,6 +11,11 @@ module PansophyAuthenticator
     @configuration ||= configure
   end
 
+  def self.valid_configuration
+    fail Error, configuration.errors unless configuration.valid?
+    configuration
+  end
+
   def self.remote?
     configuration.remote?
   end

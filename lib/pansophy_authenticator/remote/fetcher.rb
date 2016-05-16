@@ -29,7 +29,7 @@ module PansophyAuthenticator
       end
 
       def configuration
-        PansophyAuthenticator.configuration
+        PansophyAuthenticator.valid_configuration
       end
 
       def fail_for_invalid_format!
