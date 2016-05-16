@@ -25,20 +25,20 @@ module PansophyAuthenticator
       end
 
       def config_values
-        @config_values ||= from_env
+        @config_values ||= from_env_or_base
+      end
+
+      def from_env_or_base
+        FromEnv.new(base_config)
       end
 
       def base_config
         return self if @configuration_path.nil?
-        from_file
+        from_file_or_base
       end
 
-      def from_file
+      def from_file_or_base
         FromFile.new(self)
-      end
-
-      def from_env
-        FromEnv.new(base_config)
       end
     end
   end
