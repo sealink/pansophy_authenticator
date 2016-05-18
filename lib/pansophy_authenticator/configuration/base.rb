@@ -27,6 +27,7 @@ module PansophyAuthenticator
       def verification
         Result.new errors
       end
+      memoize :verification
     end
   end
 end
