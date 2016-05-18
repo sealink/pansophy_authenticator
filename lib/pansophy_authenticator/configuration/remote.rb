@@ -7,8 +7,8 @@ module PansophyAuthenticator
 
       def errors
         errors = super
-        errors << 'Bucket name is not defined' if @bucket_name.nil?
-        errors << 'File path is not defined' if @file_path.nil?
+        return errors + ['Bucket name is not defined'] if @bucket_name.nil?
+        return errors + ['File path is not defined'] if @file_path.nil?
         errors
       end
     end
