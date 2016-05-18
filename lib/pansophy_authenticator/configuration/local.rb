@@ -12,6 +12,10 @@ module PansophyAuthenticator
         errors
       end
 
+      def local?
+        true
+      end
+
       private
 
       def file_path?

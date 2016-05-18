@@ -8,7 +8,7 @@ module PansophyAuthenticator
       include Memoizable
 
       def local?
-        is_a?(Local)
+        false
       end
 
       def remote?
