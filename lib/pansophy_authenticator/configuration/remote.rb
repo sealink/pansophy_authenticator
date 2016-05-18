@@ -1,10 +1,6 @@
 module PansophyAuthenticator
   module Configuration
     class Remote < Base
-      def verification
-        Result.new errors
-      end
-
       def errors
         errors = super
         return errors + ['Bucket name is not defined'] if @bucket_name.nil?

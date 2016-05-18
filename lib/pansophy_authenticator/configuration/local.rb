@@ -1,10 +1,6 @@
 module PansophyAuthenticator
   module Configuration
     class Local < Base
-      def verification
-        Result.new errors
-      end
-
       def errors
         errors = super
         return errors + ['File path is not defined'] unless file_path?

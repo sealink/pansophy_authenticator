@@ -23,6 +23,10 @@ module PansophyAuthenticator
       def valid?
         verification.valid?
       end
+
+      def verification
+        Result.new errors
+      end
     end
   end
 end
