@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).
 
+## [Unreleased]
+### Changed
+- Simplifies verifying validity of configuration
+
 ## [0.4.3] - 2016-04-07
 ### Fixed
 - Loading of remote YAML application keys file now parses correctly
@@ -20,7 +24,7 @@ This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).
 ## [0.4.0] - 2016-02-16
 ### Added
 - Implements 'application' and 'local?' helper methods
-  
+
 ### Fixed
 - Tests could be influenced by system environment variables
 

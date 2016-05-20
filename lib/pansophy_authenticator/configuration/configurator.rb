@@ -15,30 +15,34 @@ module PansophyAuthenticator
       private
 
       def build_configuration
-        Instance.new(
-          local:       config_values.local,
+        attrs = {
           bucket_name: config_values.bucket_name,
           file_path:   config_values.file_path,
           application: config_values.application,
           cache_store: cache_store
-        )
+        }
+        if config_values.local
+          Local.new(attrs)
+        else
+          Remote.new(attrs)
+        end
       end
 
       def config_values
-        @config_values ||= from_env
+        @config_values ||= from_env_or_base
+      end
+
+      def from_env_or_base
+        FromEnv.new(base_config)
       end
 
       def base_config
         return self if @configuration_path.nil?
-        from_file
+        from_file_or_base
       end
 
-      def from_file
+      def from_file_or_base
         FromFile.new(self)
-      end
-
-      def from_env
-        FromEnv.new(base_config)
       end
     end
   end

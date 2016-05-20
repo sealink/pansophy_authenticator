@@ -3,30 +3,29 @@ require 'memoizable'
 
 module PansophyAuthenticator
   module Configuration
-    class Instance
-      include Anima.new :local, :bucket_name, :file_path, :application, :cache_store
+    class Base
+      include Anima.new :bucket_name, :file_path, :application, :cache_store
       include Memoizable
 
       def local?
-        @local
+        false
       end
 
       def remote?
         !local?
       end
 
+      def errors
+        return ['Application is not defined'] if @application.nil?
+        []
+      end
+
       def valid?
         verification.valid?
       end
 
-      def errors
-        verification.errors
-      end
-
-      private
-
       def verification
-        Verification::Verify.new(self).call
+        Result.new errors
       end
       memoize :verification
     end
