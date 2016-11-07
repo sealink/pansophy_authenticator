@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.4'
   spec.add_development_dependency 'timecop', '~> 0.8'
-  spec.add_development_dependency 'simplecov', '~> 0.11'
+  spec.add_development_dependency 'coverage-kit'
   spec.add_development_dependency 'simplecov-rcov', '~> 0.2'
   spec.add_development_dependency 'coveralls', '~> 0.8'
   spec.add_development_dependency 'rubocop', '~> 0.39'

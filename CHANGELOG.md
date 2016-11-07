@@ -6,6 +6,7 @@ This changelog adheres to [Keep a CHANGELOG](http://keepachangelog.com/).
 ## [Unreleased]
 ### Changed
 - Simplifies verifying validity of configuration
+- Use coverage kit to enforce maximum coverage
 
 ## [0.4.3] - 2016-04-07
 ### Fixed
