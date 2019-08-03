@@ -24,13 +24,13 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.1'
+  spec.required_ruby_version = '>= 2.4'
 
-  spec.add_dependency 'memoizable', '~> 0.4'
-  spec.add_dependency 'anima', '~> 0.3'
-  spec.add_dependency 'adamantium', '~> 0.2'
-  spec.add_dependency 'pansophy', '~> 0.5', '>= 0.5.2'
-  spec.add_dependency 'yamload', '~> 0.2'
+  spec.add_dependency 'memoizable'
+  spec.add_dependency 'anima'
+  spec.add_dependency 'adamantium'
+  spec.add_dependency 'pansophy'
+  spec.add_dependency 'yamload'
 
   spec.add_development_dependency 'bundler', '~> 1.11'
   spec.add_development_dependency 'rake', '~> 10.0'
