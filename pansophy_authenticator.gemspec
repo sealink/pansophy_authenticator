@@ -39,6 +39,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'coverage-kit'
   spec.add_development_dependency 'simplecov-rcov'
   spec.add_development_dependency 'coveralls'
-  spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency "rubocop", ">= 0.49.0" # CVE-2017-8418
   spec.add_development_dependency 'travis'
 end
